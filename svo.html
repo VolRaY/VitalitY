@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ПОДПИСАТЬ КОНТРАКТ</title>
+    <link rel="stylesheet" href="lal.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main class="svo">
+        <h1 class="title" id="title">Подписать контракт</h1>
+        <p id="description">Здесь вы можете подать заявку на подписание контракта </p>
+        <hr>
+        <form id="survey-form" action="https://test-server-post.vercel.app/data" method="POST" enctype="application/x-www-form-urlencoded" target="_blank">
+            <fieldset>
+                <p>Контактная информация</p>
+                <label for="name" id="name-label">ФИО: 
+                    <input id="name" type="text" name="full_name" placeholder="Введите ваше полное имя" required>
+                </label>
+                <label for="birth_date">Дата рождения: 
+                    <input id="birth_date" type="date" name="birth_date" required>
+                </label>
+                <label for="mesto_propiski">Место прописки: 
+                    <input id="mesto_propiski" type="text" name="mesto_propiski" placeholder="Введите место прописки" required>
+                </label>
+                <label for="seriy_pasport">Серия паспорта: 
+                    <input id="seriy_pasport" type="number" name="seriy_pasport" placeholder="Серия паспорта" required>
+                </label>
+                <label for="nomer_pasport">Номер паспорта: 
+                    <input id="nomer_pasport" type="number" name="nomer_pasport" placeholder="Номер паспорта" required>
+                </label>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <p>Информация о здоровье</p>
+                <label for="data_obs">Дата обследования: 
+                    <input id="data_obs" type="date" name="data_obs" required>
+                </label>
+                <label for="kategoriya_zdor">Категория здоровья: 
+                    <select id="kategoriya_zdor" name="kategoriya_zdor" required>
+                        <option value="А">А - Годен без ограничений</option>
+                        <option value="Б-3">Б-3 - Годен с незначительными ограничениями</option>
+                        <option value="В">В - Ограниченно годен</option>
+                        <option value="Г">Г - Временно не годен</option>
+                        <option value="Д">Д - Не годен</option>
+                    </select>
+                </label>
+            </fieldset> 
+            <hr>
+            <fieldset>
+                <p>Контрактная информация</p>
+                <label for="dropdown">Род войск:
+                    <select id="dropdown" name="rod_voisk" required>
+                        <option disabled selected value="">Выберите род войск</option>
+                        <option value="Танковые войска">Танковые войска</option>
+                        <option value="Мотострелковые войска">Мотострелковые войска</option>
+                        <option value="Воздушно-десантные войска">Воздушно-десантные войска</option>
+                        <option value="Военно-морской флот">Военно-морской флот</option>
+                        <option value="Ракетные войска стратегического назначения">Ракетные войска стратегического назначения</option>
+                    </select>
+                </label>
+                <label for="company_id">Военная компания: 
+                    <select id="company_id" name="company_id" required>
+                        <option value="1">ООО "Военный контракт"</option>
+                        <option value="2">АО "Спецстрой"</option>
+                        <option value="3">ЧОП "Гранит-С"</option>
+                        <option value="4">ООО "Армейские системы"</option>
+                        <option value="5">АО "Оборонсервис"</option>
+                    </select>
+                </label>
+                <label for="start_date">Дата начала контракта: 
+                    <input id="start_date" type="date" name="start_date" required>
+                </label>
+                <label for="end_date">Срок службы: 
+                    <input id="end_date" type="number" name="end_date" min="1" max="3" placeholder="1-3 года" required>
+                </label>
+            </fieldset>
+            <hr>
+            <fieldset id="bilet">
+                <p>Данные в вашем военном билете</p>
+                <div id="bilet-info">
+                    <label for="data_vidachi">Дата выдачи военного билета: 
+                        <input id="data_vidachi" type="date" name="data_vidachi">
+                    </label>
+                    <label for="id_vch">Военная часть: 
+                        <select id="id_vch" name="id_vch" required>
+                            <option value="">-- Выберите военную часть --</option>
+                            <option value="1">в/ч 28337 (г. Наро-Фоминск)</option>
+                            <option value="2">в/ч 02511 (г. Приозерск)</option>
+                            <option value="3">в/ч 32755 (г. Бердск)</option>
+                            <option value="4">в/ч 31612 (г. Верхняя Пышма)</option>
+                            <option value="5">в/ч 65349 (г. Зеленодольск)</option>
+                        </select>
+                    </label>
+                    <label for="id_v">Военкомат: 
+                        <select id="id_v" name="id_v" required>
+                            <option value="">-- Выберите военкомат --</option>
+                            <option value="1">Центральный (г. Москва)</option>
+                            <option value="2">Северный (г. Санкт-Петербург)</option>
+                            <option value="3">Западный (г. Калининград)</option>
+                            <option value="4">Восточный (г. Владивосток)</option>
+                            <option value="5">Южный (г. Сочи)</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+            <input type="submit" class="survey-form" value="Отправить данные на обработку"/>
+        </form>
+    </main>
+</body>
+</html>
