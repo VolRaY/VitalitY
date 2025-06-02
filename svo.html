@@ -11,7 +11,7 @@
         <h1 class="title" id="title">Подписать контракт</h1>
         <p id="description">Здесь вы можете подать заявку на подписание контракта </p>
         <hr>
-        <form id="survey-form" action="https://test-server-post.vercel.app/data" method="POST" enctype="application/x-www-form-urlencoded" target="_blank">
+        <form id="survey-form">
             <fieldset>
                 <p>Контактная информация</p>
                 <label for="name" id="name-label">ФИО: 
@@ -107,5 +107,37 @@
             <input type="submit" class="survey-form" value="Отправить данные на обработку"/>
         </form>
     </main>
+<script>
+document.getElementById('survey-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Собираем данные формы
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Отправляем на сервер
+    try {
+        const response = await fetch('submit.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert('✅ Данные успешно сохранены в БД!');
+            this.reset(); // Очищаем форму
+        } else {
+            alert('❌ Ошибка: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('⚠️ Произошла ошибка при отправке данных');
+    }
+});
+</script>
 </body>
 </html>
